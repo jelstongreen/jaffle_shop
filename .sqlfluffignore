@@ -1,0 +1,4 @@
+target/
+dbt_packages/
+macros/
+#jaffle_shop/models/staging/stg_customer_snapshot.sql

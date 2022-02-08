@@ -6,6 +6,7 @@ version: '0.1'
 profile: 'jaffle_shop'
 
 model-paths: ["models"]
+snapshot-paths: ["snapshots"]
 seed-paths: ["seeds"]
 test-paths: ["tests"]
 analysis-paths: ["analysis"]
@@ -20,7 +21,14 @@ clean-targets:
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
+  +file_format: delta
   jaffle_shop:
       materialized: table
       staging:
         materialized: view
+
+## Configuration for snapshots
+snapshots:
+  +file_format: delta
+  jaffle_shop:
+    +target_schema: src_jaffle_shop_snapshots
